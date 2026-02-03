@@ -17,15 +17,15 @@ while not game_closed:
         if event.type == pygame.QUIT:
             game_closed = True
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 3 or event.button == 1:
                 window.fill((255, 255, 255))
                 pygame.display.flip()
 
 
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
-    pygame.draw.circle(window, (255, 0, 0), (mouse_x, mouse_y), 3)
+    pygame.draw.circle(window, (255, 0, 0), (mouse_x, mouse_y), 5)
 
     pygame.display.flip()
 
