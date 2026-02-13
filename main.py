@@ -1,4 +1,5 @@
 import pygame
+from sprites import Zombie
 
 pygame.init()
 
@@ -8,6 +9,8 @@ pygame.display.set_caption("Shoot a Mole")
 
 game_closed = False
 pygame.mouse.set_visible(False)
+
+zombie = Zombie(window, 500, 500, 0.5)
 
 fps = pygame.time.Clock()
 while not game_closed:
@@ -21,6 +24,8 @@ while not game_closed:
             if event.button == 3 or event.button == 1:
                 window.fill((255, 255, 255))
                 pygame.display.flip()
+
+    zombie.display_state(flip=False)
 
 
     mouse_x, mouse_y = pygame.mouse.get_pos()

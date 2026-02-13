@@ -16,7 +16,7 @@ class Sprites:
         self.scale   = scale
         self._index  = 0
         self.sprite = sprite
-        self.state   = sprite.IDLE
+        self.state   = sprite.RUN
         self.location = location
         self.object = None
 
