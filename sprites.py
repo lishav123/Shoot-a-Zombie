@@ -1,6 +1,13 @@
 from pygame import transform
 from pygame import image
 
+from os import listdir
+
+zombies = listdir('./assets/')
+
+class ZombieSprite:
+    RUN  = sorted(list(filter(lambda x: "Walk" in x, zombies)))    
+
 class Sprites:
     def __init__(self, window, x, y, scale, sprite, location):
         self.window  = window
@@ -36,3 +43,7 @@ class Sprites:
             if self._index == len(self.state) - 1 and self._loop_stack:
                 self._index = 0
             self._index += 1
+
+class Zombie(Sprites):
+    def __init__(self, window, x, y, scale):
+        super().__init__(window, x, y, scale, ZombieSprite, "./assets/")
