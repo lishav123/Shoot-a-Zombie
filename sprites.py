@@ -34,7 +34,7 @@ class Sprites:
             self._index = 0
 
         finally:
-            img = image.load(f"{self.location}/{self.state[self._index]}").convert()
+            img = image.load(f"{self.location}/{self.state[self._index]}")
                 
             resize = transform.scale(img, (img.get_width () * self.scale, img.get_height() * self.scale))
             self.object = transform.flip(resize, flip, False)
