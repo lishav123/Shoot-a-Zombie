@@ -1,5 +1,6 @@
 import pygame
 from sprites import Zombie
+from random import randint
 
 pygame.init()
 
@@ -10,9 +11,13 @@ pygame.display.set_caption("Shoot a Mole")
 game_closed = False
 pygame.mouse.set_visible(False)
 
-zombie = Zombie(window, -50, 500, 0.45)
-zombie_speed = 10
-zombie_flip = False
+zombies = [
+    {
+        "state": Zombie(window, -randint(10, 50), 200, 0.45),
+        "speed": randint(2, 10),
+        "flip" : False
+    } for _ in range(5)
+]
 
 fps = pygame.time.Clock()
 while not game_closed:
@@ -27,16 +32,17 @@ while not game_closed:
                 window.fill((255, 255, 255))
                 pygame.display.flip()
 
-    zombie.display_state(flip=zombie_flip)
-    zombie.change_position(zombie.x + zombie_speed, zombie.y)
+    for zombie in zombies:
+        zombie["state"].display_state(flip=zombie["flip"])
+        zombie["state"].change_position(zombie["state"].x + zombie["speed"], zombie["state"].y)
 
-    if zombie.x > WIDTH:
-        zombie_speed = -zombie_speed
-        zombie_flip = not zombie_flip
+        if zombie["state"].x > WIDTH:
+            zombie["speed"] = -zombie["speed"]
+            zombie["flip"]  = not zombie["flip"]
 
-    if zombie.x < -50:
-        zombie_speed = -zombie_speed
-        zombie_flip = not zombie_flip
+        if zombie["state"].x < -50:
+            zombie["speed"] = -zombie["speed"]
+            zombie["flip"]  = not zombie["flip"]
 
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
