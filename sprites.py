@@ -6,7 +6,7 @@ from os import listdir
 zombies = listdir('./assets/')
 
 class ZombieSprite:
-    RUN  = sorted(list(filter(lambda x: "Walk" in x, zombies)))    
+    RUN  = sorted(list(filter(lambda x: "Walk" in x, zombies))) 
 
 class Sprites:
     def __init__(self, window, x, y, scale, sprite, location):
