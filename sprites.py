@@ -26,6 +26,12 @@ class Sprites:
         self.x = x 
         self.y = y
 
+    def is_inside_area(self, x, y):
+        x0, y0 = self.x, self.y 
+        x_, y_ = self.x + self.object.get_width(), self.y + self.object.get_height()
+
+        return x0 < x < x_ and y0 < y < y_ 
+
     def display_state(self, flip=False):
         try:
             self.state[self._index]
