@@ -8,12 +8,15 @@ WIDTH, HEIGHT = 1200, 800
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Shoot a Mole")
 
+bg_image = pygame.image.load(f"./assets/Background.png")
+bg_image = pygame.transform.scale(bg_image, (WIDTH + 500, HEIGHT + 500))
+
 game_closed = False
 pygame.mouse.set_visible(False)
 
 zombies = [
     {
-        "state": Zombie(window, -randint(10, 50), 200, 0.45),
+        "state": Zombie(window, -randint(10, 50), 480, 0.45),
         "speed": randint(2, 10) * (0.5),
         "flip" : False
     } for _ in range(5)
@@ -23,7 +26,7 @@ fps = pygame.time.Clock()
 while not game_closed:
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
-    window.fill((0, 0, 0))
+    window.blit(bg_image, (0, -500))
     fps.tick(60)
 
     for event in pygame.event.get():
