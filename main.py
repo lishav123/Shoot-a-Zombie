@@ -12,11 +12,6 @@ bg_image = pygame.image.load(f"./assets/Background.png")
 bg_image = pygame.transform.scale(bg_image, (WIDTH + 500, HEIGHT + 500))
 
 sizes = [(10, 10), (20, 20), (50, 50), (100, 100)]
-size = (100, 100)
-
-effect_image = pygame.image.load(f"./assets/boom.png")
-effect_image = pygame.transform.scale(effect_image, size)
-
 side_effect_after_shoot = []
 
 game_closed = False
@@ -49,7 +44,8 @@ while not game_closed:
 
                 for i, zombie in enumerate(zombies):
                     if zombie["state"].is_inside_area(mouse_x, mouse_y):
-                        side_effect_after_shoot.append({"image": effect_image})
+                        side_effect_after_shoot.append({"image": pygame.transform.scale(pygame.image.load(f"./assets/boom.png", 10))})
+                    
                         del zombies[i]
 
     for zombie in zombies:
