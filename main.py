@@ -62,6 +62,16 @@ fps = pygame.time.Clock()
 
 page = 0
 
+score = 10
+hight_score = 0
+
+try:
+    with open("highscore.txt") as fs:
+        hight_score = int(fs.read().strip())
+except:
+    with open("highscore.txt", "w") as fs:
+        fs.write("0")
+
 while not game_closed:
     mouse_x, mouse_y = pygame.mouse.get_pos()
     fps.tick(60)
@@ -82,18 +92,21 @@ while not game_closed:
                         if zombie["state"].is_inside_area(mouse_x, mouse_y):
                             side_effect_after_shoot.append(SideEffects(window=window, x=mouse_x, y=mouse_y, size_array=sizes, location="./assets/boom.png"))
                             zombies[:] = list(filter(lambda z: z["id"] != zombie["id"], zombies))
+                            score += 5
                 
                 elif page == 0:
                     if (mouse_x > 500 and mouse_x < 735) and (mouse_y > 400 and mouse_y < 460):
                         page = 1
     
     if page == 0:
+        score = 0
         window.blit(open_image, (0, 0))
         window.blit(bigfont.render(f'PLAY GAME', True, (255, 0, 0), (25, 25, 25)), (WIDTH / 2 - 100, HEIGHT / 2))
 
     elif page == 1:
         window.blit(bg_image, (0, -500))
         window.blit(font.render(f'Level: {level}', True, (255, 255, 255)), (10, 10))
+        window.blit(font.render(f'Score: {score}', True, (255, 255, 255)), (WIDTH - 180, 10))
 
         pygame.draw.rect(window, (0, 0, 0), pygame.Rect((WIDTH / 2 - 100), 10, 15 * 15, 36))
         pygame.draw.rect(window, (255, 0, 0), pygame.Rect((WIDTH / 2 - 100), 10, 15 * allow_missed, 36))
@@ -121,6 +134,16 @@ while not game_closed:
 
         if allow_missed == 0:
             page = 0
+            allow_missed = 15
+            level = 1
+            zombies = [{
+                "id": zombie_id,
+                "state": Zombie(window, -randint(10, 50), 480, 0.45),
+                "speed": randint(2, 10) * (0.5),
+                "flip" : False
+            } for _ in range(level)
+            ]
+            zombie_id = 0
 
 
     pygame.draw.circle(window, (255, 0, 0), (mouse_x, mouse_y), 5)
