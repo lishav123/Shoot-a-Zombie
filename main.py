@@ -17,6 +17,29 @@ side_effect_after_shoot = []
 game_closed = False
 pygame.mouse.set_visible(False)
 
+class SideEffects:
+    def __init__(self, window, x, y, size_array, location):
+        self.window = window 
+        self.x = x 
+        self.y = y 
+        self.size_array = size_array
+        self.location = location
+        self.image = None  
+        self._index = 0
+
+    def display(self):
+        if self._index == len(self.size_array) - 1:
+            ...
+        else:
+            self.window.blit(self.location, self.size[self._index])
+
+    def update_index(self):
+        if self._index == len(self.size_array) - 1:
+            ...
+        else:
+            self._index += 1
+
+
 zombies = [
     {
         "state": Zombie(window, -randint(10, 50), 480, 0.45),
@@ -60,8 +83,12 @@ while not game_closed:
             zombie["speed"] = -zombie["speed"]
             zombie["flip"]  = not zombie["flip"]
 
-    window.blit(effect_image, (mouse_x - size[0]/2, mouse_y - size[1]/2))
+    for s_effect in side_effect_after_shoot:
+        s_effect
+
     pygame.draw.circle(window, (255, 0, 0), (mouse_x, mouse_y), 5)
     pygame.display.flip()
 
 pygame.quit()
+
+# window.blit(effect_image, (mouse_x - size[0]/2, mouse_y - size[1]/2))
