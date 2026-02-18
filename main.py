@@ -31,7 +31,9 @@ class SideEffects:
         if self._index == len(self.size_array) - 1:
             ...
         else:
-            self.window.blit(self.location, self.size[self._index])
+            self.image = pygame.image.load(self.location)
+            self_image = pygame.transform.scale(self_image, self.size_array[self._index])
+            self.window.blit(self_image, (self.x, self.y))
 
     def update_index(self):
         if self._index == len(self.size_array) - 1:
@@ -67,7 +69,7 @@ while not game_closed:
 
                 for i, zombie in enumerate(zombies):
                     if zombie["state"].is_inside_area(mouse_x, mouse_y):
-                        side_effect_after_shoot.append({"image": pygame.transform.scale(pygame.image.load(f"./assets/boom.png", 10))})
+                        side_effect_after_shoot.append({"image": })
                     
                         del zombies[i]
 
