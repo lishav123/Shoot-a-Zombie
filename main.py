@@ -65,6 +65,8 @@ while not game_closed:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 3 or event.button == 1:
                 pygame.display.flip()
+                pygame.mixer.music.load("./assets/gunshot.mp3")
+                pygame.mixer.music.play()
 
                 for i, zombie in enumerate(zombies):
                     if zombie["state"].is_inside_area(mouse_x, mouse_y):
