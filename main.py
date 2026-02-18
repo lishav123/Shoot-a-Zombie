@@ -1,4 +1,5 @@
 import pygame
+
 from sprites import Zombie
 from random import randint
 
@@ -11,7 +12,7 @@ pygame.display.set_caption("Shoot a Mole")
 bg_image = pygame.image.load(f"./assets/Background.png")
 bg_image = pygame.transform.scale(bg_image, (WIDTH + 500, HEIGHT + 500))
 
-sizes = [(10, 10), (20, 20), (50, 50), (100, 100)]
+sizes = [(i * 10, i * 10) for i in range(11)]
 side_effect_after_shoot = []
 
 game_closed = False
@@ -32,8 +33,8 @@ class SideEffects:
             ...
         else:
             self.image = pygame.image.load(self.location)
-            self_image = pygame.transform.scale(self_image, self.size_array[self._index])
-            self.window.blit(self_image, (self.x, self.y))
+            self.image = pygame.transform.scale(self.image, self.size_array[self._index])
+            self.window.blit(self.image, (self.x - (self.size_array[self._index][0] / 2), self.y - (self.size_array[self._index][0] / 2))) 
 
     def update_index(self):
         if self._index == len(self.size_array) - 1:
@@ -63,14 +64,11 @@ while not game_closed:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 3 or event.button == 1:
-                window.fill((255, 255, 255))
                 pygame.display.flip()
-
 
                 for i, zombie in enumerate(zombies):
                     if zombie["state"].is_inside_area(mouse_x, mouse_y):
-                        side_effect_after_shoot.append({"image": })
-                    
+                        side_effect_after_shoot.append(SideEffects(window=window, x=mouse_x, y=mouse_y, size_array=sizes, location="./assets/boom.png"))
                         del zombies[i]
 
     for zombie in zombies:
@@ -86,11 +84,10 @@ while not game_closed:
             zombie["flip"]  = not zombie["flip"]
 
     for s_effect in side_effect_after_shoot:
-        s_effect
+        s_effect.display()
+        s_effect.update_index()
 
     pygame.draw.circle(window, (255, 0, 0), (mouse_x, mouse_y), 5)
     pygame.display.flip()
 
 pygame.quit()
-
-# window.blit(effect_image, (mouse_x - size[0]/2, mouse_y - size[1]/2))
