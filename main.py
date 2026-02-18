@@ -1,7 +1,7 @@
 import pygame
 
 from sprites import Zombie
-from random import randint
+from random import randint, choice
 
 pygame.init()
 font = pygame.font.SysFont('Arial', 36) 
@@ -92,8 +92,8 @@ while not game_closed:
     if len(zombies) == 0:
         zombies.extend([{
             "id": f"Lv{level}Idx{num}",
-            "state": Zombie(window, -(num * 120) + randint(10, 50), 480, 0.45),
-            "speed": randint(5, 15),
+            "state": Zombie(window, -(num * 120) + randint(10, 50), choice([60, 480]), 0.45),
+            "speed": randint(5, 10),
             "flip" : False
         } for num in range(level)])
         level += 1
