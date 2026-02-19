@@ -28,4 +28,12 @@ Enjoy the comment, and feel free to update it or do experiment here, and also do
 
 # How to play this game?
 
-This is pc game, this just need one thing to play that is your mouse, it's a simple shooting game so just aim at the target and click to shoot, you will get the timer on, try to shoot as many zombie you want for making a new high score.
+...
+
+# Logic of this game!
+
+...
+
+# About me
+
+...
