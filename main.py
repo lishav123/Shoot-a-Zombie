@@ -5,13 +5,16 @@ from sprites import Zombie
 
 pygame.init()
 
+# Sound assets initalized
 pygame.mixer.set_num_channels(8)
-bg_music = pygame.mixer.Sound("./assets/jojo.mp3")
-shoot_music = pygame.mixer.Sound("./assets/gunshot.mp3")
+bg_music = pygame.mixer.Sound("./assets/jojo.mp3") # Music that will play when the game will start
+shoot_music = pygame.mixer.Sound("./assets/gunshot.mp3") # The sound effect of the shoot
 
-font = pygame.font.SysFont('Arial', 36) 
-bigfont = pygame.font.SysFont('Arial', 50) 
+# Initializing the fonts
+font = pygame.font.SysFont('Arial', 36)  # Font for small texts
+bigfont = pygame.font.SysFont('Arial', 50) # Font for big task mainly for first screen
 
+# When user will shoot the zombie, we can see a effect like image of "boom" is scaling, this class is made for handling that effect in ease
 class SideEffects:
     def __init__(self, window, x, y, size_array, location):
         self.window = window 
