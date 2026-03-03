@@ -8,6 +8,7 @@ zombies = listdir('./assets/')
 class ZombieSprite:
     RUN  = sorted(list(filter(lambda x: "Walk" in x, zombies))) 
 
+# Basic structure for sprites
 class Sprites:
     def __init__(self, window, x, y, scale, sprite, location):
         self.window  = window
