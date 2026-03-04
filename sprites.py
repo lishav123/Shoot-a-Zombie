@@ -5,6 +5,7 @@ from os import listdir
 
 zombies = listdir('./assets/')
 
+# Basic structure for zombie sprites
 class ZombieSprite:
     RUN  = sorted(list(filter(lambda x: "Walk" in x, zombies))) 
 
