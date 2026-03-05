@@ -12,17 +12,29 @@ class ZombieSprite:
 # Basic structure for sprites
 class Sprites:
     def __init__(self, window, x, y, scale, sprite, location):
+        '''
+           Arguments:
+               window: the game window
+               x: x-axis position of the sprite
+               y: y-axis position of the sprite
+               scale: size of the sprite twiching it will grow the size of image by keeping in mind that it grows according to ratios
+               sprite: a class with arugment of location of different activity
+               location: location of the the folder where sprite exists
+        '''
         self.window  = window
         self.x       = x
         self.y       = y
         self.scale   = scale
-        self._index  = 0
+        self._index  = 0 # defines the current index of image
         self.sprite = sprite
-        self.state   = sprite.RUN
+        self.state   = sprite.RUN # defines the state or different activity of sprite mention in class with locations like ZombieSprite class
         self.location = location
-        self.object = None
+        self.object = None # contains the object of image given by pygame.image
 
-        self._loop_stack = []
+        self._loop_stack = [] # for making a animation complete before switching, let's say there is animation [run1, run2, run3, run4, run5] 
+        # and user change the event to jump, in genreal what will happen is, let's the current value is "run2" then suddenly after event it will 
+        # now use jump, note that whole cycle of run ain't completed yet, so _loop_stack is used when you want a complete cycle of animation instead
+        # of a sudden change if _loop_stack is not empty then run2 is there and user change the event event that time also first run2 will go till run5 after that jump will happen 
 
     def change_position(self, x, y):
         self.x = x 
