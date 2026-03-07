@@ -37,6 +37,12 @@ class Sprites:
         # of a sudden change if _loop_stack is not empty then run2 is there and user change the event event that time also first run2 will go till run5 after that jump will happen 
 
     def change_position(self, x, y):
+        '''
+         Args:
+          x: x position of your sprite
+          y: y position of your sprite
+        It changes the position of your sprite in (x, y) coords.
+        '''
         self.x = x 
         self.y = y
 
