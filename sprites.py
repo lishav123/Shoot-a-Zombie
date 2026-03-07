@@ -47,6 +47,16 @@ class Sprites:
         self.y = y
 
     def is_inside_area(self, x, y):
+        '''
+         Args:
+           x: x position of external point
+           y: y position of external point
+
+        Return:
+           bool
+
+        It checke weather the external point is inside of your sprite area
+        '''
         x0, y0 = self.x, self.y 
         x_, y_ = self.x + self.object.get_width(), self.y + self.object.get_height()
 
