@@ -63,6 +63,10 @@ class Sprites:
         return x0 < x < x_ and y0 < y < y_ 
 
     def display_state(self, flip=False):
+        '''
+          This method is used for display the animation for the list of the sprites, flip is an arugument here 
+          which itself tell used to flip the object vertically
+        '''
         try:
             self.state[self._index]
 
