@@ -85,5 +85,8 @@ class Sprites:
             self._index += 1
 
 class Zombie(Sprites):
+    '''
+      This the zombie using sprite characterstics
+    '''
     def __init__(self, window, x, y, scale):
         super().__init__(window, x, y, scale, ZombieSprite, "./assets/")
