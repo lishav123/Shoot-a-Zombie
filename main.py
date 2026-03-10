@@ -17,6 +17,16 @@ bigfont = pygame.font.SysFont('Arial', 50) # Font for big task mainly for first 
 # When user will shoot the zombie, we can see a effect like image of "boom" is scaling, this class is made for handling that effect in ease
 class SideEffects:
     def __init__(self, window, x, y, size_array, location):
+        '''
+          Args:
+            window: the game window
+            x: the x-axis
+            y: the y-axis
+            size_array: the array of tuples for animation expanding
+            location: location of the image
+            image: the image object
+            self._index: for following the list of size of objects
+        '''
         self.window = window 
         self.x = x 
         self.y = y 
