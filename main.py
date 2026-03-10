@@ -36,6 +36,9 @@ class SideEffects:
         self._index = 0
 
     def display(self):
+        '''
+          This displays the animation
+        '''
         if self._index == len(self.size_array) - 1:
             ...
         else:
@@ -44,6 +47,9 @@ class SideEffects:
             self.window.blit(self.image, (self.x - (self.size_array[self._index][0] / 2), self.y - (self.size_array[self._index][0] / 2))) 
 
     def update_index(self):
+        '''
+          updates the animation here.
+        '''
         if self._index == len(self.size_array) - 1:
             ...
         else:
