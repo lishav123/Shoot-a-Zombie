@@ -55,18 +55,21 @@ class SideEffects:
         else:
             self._index += 1
 
+# Configuring the game window
 WIDTH, HEIGHT = 1200, 800
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Shoot a Mole")
 
+# Loading the background image (not displayed yet)
 bg_image = pygame.image.load(f"./assets/Background.png")
 bg_image = pygame.transform.scale(bg_image, (WIDTH + 500, HEIGHT + 500))
 
+# Loading the opening image of the game
 open_image = pygame.transform.scale(pygame.image.load(f"./assets/open.png"), (WIDTH, HEIGHT))
 
-
+# setting the size animation for "boom" effects, means first size will be 0 height 0 width pixels then 10 height 10 width pixels then 20...30 and so on till 100
 sizes = [(i * 10, i * 10) for i in range(11)]
-side_effect_after_shoot = []
+side_effect_after_shoot = [] # will track the postions of boom so that it can play on specifiy area where needed
 
 game_closed = False
 pygame.mouse.set_visible(False)
