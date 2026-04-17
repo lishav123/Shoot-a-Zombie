@@ -29,3 +29,6 @@ Enjoy the comment, and feel free to update it or do experiment here, and also do
 # How to play this game?
 
 There is no time limit, zombie are coming, shoot them all, remember for shooting, right click or tap the zombie to shoot them, remeber they will increase in specific levels and also you can only ignore 15 zombies, make high score!
+
+
+Author - Aishwaray Tiwary
